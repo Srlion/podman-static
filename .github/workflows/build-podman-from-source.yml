@@ -6,11 +6,11 @@ on:
       podman_version:
         description: "Podman version (tag)"
         required: true
-        default: "v5.8.1"
+        default: "v5.8.2"
       crun_version:
         description: "crun version"
         required: true
-        default: "1.27"
+        default: "1.27.1"
       conmon_version:
         description: "conmon version (tag)"
         required: true
@@ -22,7 +22,7 @@ on:
       aardvark_dns_version:
         description: "aardvark-dns version (tag)"
         required: true
-        default: "v1.17.0"
+        default: "v1.17.1"
       catatonit_version:
         description: "catatonit version (tag)"
         required: true
