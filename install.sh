@@ -81,6 +81,9 @@ EOF
 
 systemctl --user daemon-reload
 systemctl --user enable --now podman.socket
+# Make CONTAINERS_CONF available to all systemd user units (quadlets, etc.)
+mkdir -p ~/.config/environment.d
+echo 'CONTAINERS_CONF=/opt/podman/etc/containers/containers.conf' > ~/.config/environment.d/podman.conf
 loginctl enable-linger "$USER"
 echo "Podman socket active at /run/user/$(id -u)/podman/podman.sock"
 
