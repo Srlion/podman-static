@@ -5,7 +5,7 @@ REPO="srlion/podman-static"
 PREFIX="/opt/podman"
 PROFILE="/etc/profile.d/podman.sh"
 
-INSTALLED=$(podman --version 2>/dev/null | awk '{print $NF}')
+INSTALLED=$(podman --version 2>/dev/null | awk '{print $NF}' || true)
 LATEST=$(curl -fsSL "https://api.github.com/repos/${REPO}/releases/latest" | grep -Po '"tag_name":\s*"v?\K[^"]+')
 
 if [ "$INSTALLED" = "$LATEST" ]; then
