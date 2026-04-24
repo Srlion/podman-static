@@ -17,7 +17,8 @@ echo "Installing host dependencies..."
 sudo apt-get update -y
 sudo apt-get install -y \
 uidmap passt fuse-overlayfs \
-libseccomp2 libsystemd0 libglib2.0-0
+libseccomp2 libsystemd0 libglib2.0-0 \
+dbus-user-session
 
 echo "Downloading podman bundle..."
 curl -fsSL -o /tmp/podman-bundle.tar.gz \
@@ -79,6 +80,7 @@ ExecStart=/opt/podman/bin/podman $LOGGING system service
 WantedBy=default.target
 EOF
 
+systemctl --user start dbus
 systemctl --user daemon-reload
 systemctl --user enable --now podman.socket
 # Make CONTAINERS_CONF available to all systemd user units (quadlets, etc.)
